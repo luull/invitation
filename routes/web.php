@@ -13,6 +13,7 @@ use App\Http\Controllers;
 |
 */
 Route::get('/', 'frontpage\indexController@index');
+Route::get('/manager', 'manager\indexController@index');
 
 Route::get('/login', 'frontpage\AuthController@index')->name('login');
 Route::post('/auth/login', 'frontpage\AuthController@login')->name('redirectAuthLogin');
@@ -29,3 +30,8 @@ Route::get('/auth/facebook/redirect', 'frontpage\AuthController@redirectToProvid
 Route::get('/auth/facebook/callback', 'frontpage\AuthController@handleProviderCallback2');
 
 Route::get('/pricelist', 'frontpage\indexController@pricelist');
+
+Route::get('/init/invitation', 'manager\indexController@initInvitation');
+Route::post('/create/invitation', 'manager\indexController@createInvitation')->name('create-invitation');
+
+Route::get('{id}/themes/{theme}', 'templates\indexController@index');

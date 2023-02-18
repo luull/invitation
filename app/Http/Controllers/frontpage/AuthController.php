@@ -7,6 +7,7 @@
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
     use Laravel\Socialite\Facades\Socialite; 
     use App\Models\Users; 
+    use App\Models\Templates;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\Http\Request; 
     use Illuminate\Support\Facades\Hash;
@@ -34,8 +35,10 @@
                 if($hsl != null){
                     if($hsl->email == $email){
                         if (Hash::check($pass, $hsl->password)) {
+                            $getTheme = Templates::where('id', $hsl->id_templates)->first();
                             session(['dataUser' => $hsl]);
-                            return redirect('/')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
+                            session(['themes' => $getTheme]);
+                            return redirect('/manager')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
 
                         }else{
                             return redirect()->back()->with(['message' => 'Invalid Password', 'color' => 'alert-danger']);
@@ -58,8 +61,10 @@
                 $user_google    = Socialite::driver('google')->user();
                 $user           = Users::where('email', $user_google['email'])->first();                
                 if($user != null){
+                    $getTheme = Templates::where('id', $user->id_templates)->first();
                     session(['dataUser' => $user]);
-                    return redirect('/')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
+                    session(['themes' => $getTheme]);
+                    return redirect('/manager')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
                 }else{
                     $create = Users::create([
                         'name'              => $user_google['name'],
@@ -81,8 +86,10 @@
                 $user_facebook    = Socialite::driver('facebook')->user();
                 $user           = Users::where('email', $user_facebook['email'])->first();                
                 if($user != null){
+                    $getTheme = Templates::where('id', $user->id_templates)->first();
                     session(['dataUser' => $user]);
-                    return redirect('/')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
+                    session(['themes' => $getTheme]);
+                    return redirect('/manager')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
                 }else{
                     $create = Users::create([
                         'name'              => $user_facebook['name'],
@@ -134,8 +141,9 @@
         {
             if ($request->session()->has('dataUser')) {
                 $request->session()->flush('dataUser');
+                $request->session()->flush('themes');
             }
-            return redirect('/')->with(['message' => 'Successfully Logged Out', 'color' => 'alert-success']);
+            return redirect('/manager')->with(['message' => 'Successfully Logged Out', 'color' => 'alert-success']);
         }
     }
 

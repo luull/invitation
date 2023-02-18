@@ -1,9 +1,9 @@
-@extends('templates-frontpage.master')
+@extends('master')
 @section('title')
 <title>Index</title>
 @endsection
 @section('content')
-    <!-- ======= Featured Services Section ======= -->
+    {{-- <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services">
       <div class="container">
 
@@ -252,7 +252,7 @@
         </div><!-- Features Item -->
 
       </div>
-    </section><!-- End Features Section -->
+    </section><!-- End Features Section --> --}}
 
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing pt-0">

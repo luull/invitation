@@ -40,9 +40,16 @@
 <body>
 
 
-  @if(Request::is('pricelist','/'))
+  @if(Request::is('login','regis'))
   <!-- ======= Header ======= -->
-  @include('templates-frontpage.header')
+  <!-- End Header -->
+  @else
+  <!-- ======= Header ======= -->
+    @if(empty(session('dataUser')))
+      @include('templates-frontpage.header')
+    @else
+      @include('templates-manager.header')
+    @endif
   <!-- End Header -->
   @endif
 
@@ -51,11 +58,19 @@
     @yield('content')
   </main><!-- End #main -->
 
-  @if(Request::is('pricelist','/'))
+  @if(Request::is('login','regis'))
   <!-- ======= Footer ======= -->
-  @include('templates-frontpage.footer')
   <!-- End Footer -->
+  @else
+  <!-- ======= Footer ======= -->
+    @if(empty(session('dataUser'))):
+      @include('templates-frontpage.footer')
+    @else
+      @include('templates-manager.footer')
+    @endif
+<!-- End Footer -->
   @endif
+
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -68,7 +83,7 @@
   <script src="{{ asset('frontpage-assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
   <script src="{{ asset('frontpage-assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
   <script src="{{ asset('frontpage-assets/vendor/aos/aos.js')}}"></script>
-  <script src="{{ asset('frontpage-assets/vendor/php-email-form/validate.js')}}"></script>
+  {{-- <script src="{{ asset('frontpage-assets/vendor/php-email-form/validate.js')}}"></script> --}}
 
   <!-- Template Main JS File -->
   <script src="{{ asset('frontpage-assets/js/main.js')}}"></script>

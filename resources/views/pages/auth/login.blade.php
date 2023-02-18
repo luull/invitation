@@ -1,4 +1,4 @@
-@extends('templates-frontpage.master')
+@extends('master')
 @section('title')
 <title>Login</title>
 @endsection
