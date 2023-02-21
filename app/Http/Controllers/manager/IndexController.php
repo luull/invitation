@@ -34,17 +34,17 @@ class indexController extends Controller
         ]);
         if ($validate->fails()) {
             return redirect()->back()->with(['message' => 'The Image does not meet the Requirements', 'color' => 'alert-warning']);
-
         }else{
             $image = '';
             if($req->hasFile('bg_header')){
                 $imageName=time().session('dataUser')->id.'.'.$req->bg_header->extension();
-                $path = public_path('users-assets/'.session('dataUser')->name);
+                $folderName=\Str::slug(session('dataUser')->name);
+                $path = public_path('users-assets/'.$folderName);
                 if(!File::isDirectory($path)){
-                    return File::makeDirectory($path, $mode = 0777, true, true);
+                    File::makeDirectory($path, $mode = 0777, true, true);
                 }
-                $req->bg_header->move(public_path('users-assets/'.session('dataUser')->name), $imageName);
-                $image = "users-assets/".session('dataUser')->name."/$imageName";
+                $req->bg_header->move(public_path('users-assets/'.$folderName), $imageName);
+                $image = "users-assets/".$folderName."/$imageName";
             }else {
                 $image = $req->default;
             }
@@ -53,12 +53,23 @@ class indexController extends Controller
                 'username_male' => $req->username_male,
                 'name_female' => $req->name_female,
                 'username_female' => $req->username_female,
-                'wedding_date' => $req->wedding_date,
-                'wedding_time' => $req->wedding_time,
-                'quotes' => $req->quotes,
+                'father_male' => $req->father_male,
+                'mother_male' => $req->mother_male,
+                'father_female' => $req->father_female,
+                'mother_female' => $req->mother_female,
+                'akad_date' => $req->akad_date,
+                'akad_time' => $req->akad_time,
+                'resepsi_date' => $req->resepsi_date,
+                'resepsi_time' => $req->resepsi_time,
                 'bg_header' => $image,
+                'header_message' => $req->header_message,
+                'akad_address' => $req->akad_address,
+                'resepsi_address' => $req->resepsi_address,
+                'footer_message' => $req->footer_message,
             ]);
             if($hsl){
+                // $update = Invitations::where('id_users', session('dataUser')->id)->first();
+                // session(['themes' => $update]);
                 return redirect()->back()->with(['message' => 'Invitation Data Succefully to save', 'color' => 'alert-success']);
             }else{
                 return redirect()->back()->with(['message' => 'Invitation Data Unsuccess to save', 'color' => 'alert-danger']);

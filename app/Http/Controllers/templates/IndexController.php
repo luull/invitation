@@ -3,6 +3,7 @@ namespace App\Http\Controllers\templates;
 use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller;
 use App\Models\Templates;
+use App\Models\Invitations;
 
 class indexController extends Controller
 {
@@ -14,8 +15,9 @@ class indexController extends Controller
         if(session('themes') == null){
             return redirect('/login');
         }
+        $getInvitation = Invitations::where('id_users', session('dataUser')->id)->first();
         $getTheme = Templates::where('themes', $req->theme)->first();
-        return view('templates/'.$getTheme->themes.'/index');
+        return view('templates/'.$getTheme->themes.'/index', compact('getInvitation'));
     }
 }
 ?>

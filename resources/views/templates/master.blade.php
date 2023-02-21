@@ -42,9 +42,11 @@
   {{-- <i class="bi bi-list mobile-nav-toggle d-xl-none"></i> --}}
 
   @include('templates.'.session('themes')->themes.'.header')
+  @yield(session('themes')->yield)
+  @yield('header-'.session('themes')->yield)
   
   <main id="main">
-      @yield(session('themes')->yield)
+      @yield('main-'.session('themes')->yield)
     </main>
     
   @include('templates.'.session('themes')->themes.'.footer')

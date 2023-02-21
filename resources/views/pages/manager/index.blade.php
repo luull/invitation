@@ -28,7 +28,22 @@
       <section id="service-details" class="service-details">
         <div class="container" data-aos="fade-up">
   
-          <div class="row gy-4 justify-content-center">
+            @if(empty($check))
+            <div class="row gy-4 justify-content-center">
+            <div class="text-center">
+            <div class="row">
+                <div class="col-md-8 col-12 col-sm-12 col-xs-12 col-12" style="text-align:left">
+                    <h3>Silahkan Buat Undangan</h3>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 col-12" style="text-align:right">
+                       <a href="/init/invitation" class="btn btn-light">Buat Undangan</a>
+                    </div>
+                </div>
+                <hr>
+                <img src="{{ asset('frontpage-assets/img/schedule.svg') }}" class="img-fluid" alt="">
+            </div>
+            </div>
+            @endif
             @if (session('message'))
             <div class="alert {{ session('color') }} alert-dismissible fade show">
                 {{ session('message') }}
@@ -36,125 +51,181 @@
             </div>
             @endif
             @if(!empty($check))
-            <div class="col-lg-4">
-              <div class="services-list">
-                <a href="#bio">Biodata</a>
-                <a href="#music">Music</a>
-                <a href="#">Foto-foto</a>
-                <a href="#">Video</a>
-              </div>
-  
-              <h4>{{ $check->username_male }} & {{ $check->username_female }} </h4>
-              <p>{{ $check->quotes }}</p>
-            </div>
-            @endif
-            <div class="{{ empty($check) ? 'col-12' : 'col-8' }}" style="max-height:70vh;overflow:scroll" id="bla">
-                @if(empty($check))
-                    <div class="text-center">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-12 col-xs-12 col-12" style="text-align:left">
-                            <h3>Silahkan Buat Undangan</h3>
-                        </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12 col-12" style="text-align:right">
-                               <a href="/init/invitation" class="btn btn-light">Buat Undangan</a>
-                            </div>
-                        </div>
-                        <hr>
-                        <img src="{{ asset('frontpage-assets/img/schedule.svg') }}" class="img-fluid" alt="">
-                    </div>
-                    @else
-                    
-                    <div id="bio">
-                        <h3>Biodata</h3>
-                        <hr style="width: 60px">
-                        <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-8 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Nama Lengkap Pria</label>
-                                        <input type="text" class="form-control" value="{{ $check->name_male }}" name="name_male"/>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="bio-tab" data-bs-toggle="tab" data-bs-target="#bio-tab-pane" type="button" role="tab" aria-controls="bio-tab-pane" aria-selected="true">Biodata</button>
+                        <button class="nav-link" id="jdwl-tab" data-bs-toggle="tab" data-bs-target="#jdwl-tab-pane" type="button" role="tab" aria-controls="jdwl-tab-pane" aria-selected="false">Jadwal</button>
+                        <button class="nav-link" id="psn-tab" data-bs-toggle="tab" data-bs-target="#psn-tab-pane" type="button" role="tab" aria-controls="psn-tab-pane" aria-selected="false">Pesan surat</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                     
+                            <div class="tab-pane fade show active" id="bio-tab-pane" role="tabpanel" aria-labelledby="bio-tab" tabindex="0">
+                                <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <h3 class="mb-0">Biodata</h3>
+                                        <hr class="mb-0" style="width: 60px">
                                     </div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Nama Panggilan Pria</label>
-                                        <input type="text" class="form-control" value="{{ $check->username_male }}" name="username_male"/>
+                                    <div class="col-md-8 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Lengkap Pria</label>
+                                            <input type="text" class="form-control" value="{{ $check->name_male }}" name="name_male"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Nama Lengkap Wanita</label>
-                                        <input type="text" class="form-control" value="{{ $check->name_female }}" name="name_female"/>
+                                    <div class="col-md-4 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Panggilan Pria</label>
+                                            <input type="text" class="form-control" value="{{ $check->username_male }}" name="username_male"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Nama Panggilan Wanita</label>
-                                        <input type="text" class="form-control" value="{{ $check->username_female }}" name="username_female"/>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Ayah Pria</label>
+                                            <input type="text" class="form-control" value="{{ $check->father_male }}" name="father_male"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-4 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Tanggal Pernikahan</label>
-                                        <input type="date" class="form-control" value="{{ $check->wedding_date }}" name="wedding_date"/>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Ibu Pria</label>
+                                            <input type="text" class="form-control" value="{{ $check->mother_male }}" name="mother_male"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-3 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Waktu Pernikahan</label>
-                                        <input type="time" class="form-control" value="{{ $check->wedding_time }}" name="wedding_time"/>
+                                    <div class="col-md-8 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Lengkap Wanita</label>
+                                            <input type="text" class="form-control" value="{{ $check->name_female }}" name="name_female"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-5 mb-3">
-                                    <div class="form-group">
-                                        <label class="my-3" for="">Quotes</label>
-                                        <textarea name="quotes" class="form-control" id="" cols="10" rows="3">{{ $check->quotes }}</textarea>
+                                    <div class="col-md-4 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Panggilan Wanita</label>
+                                            <input type="text" class="form-control" value="{{ $check->username_female }}" name="username_female"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-5 col-12">
-        
-                                                <label class="my-3" for="">Background utama</label>
-                                                <br>
-                                                <img class="mb-3" src="{{ asset($check->bg_header) }}" style="width:250px;border-radius:8px" alt="">
-                                            </div>
-                                            <div class="col-md-7 col-12">
-                                                <label class="my-3" for="">Ubah Background</label>
-                                                <small class="text-danger">* batas ukuran 2mb</small>
-                                                <br>
-                                                <input type="file" class="form-control" name="bg_header">
-                                                <input type="text" class="form-control" value="{{ $check->bg_header }}" name="default" hidden>
-                                                @error('image')
-                                                <br>
-                                                <div class="text-danger mt-1">Gambar tidak sesuai dengan ketentuan</div>
-                                                @enderror
-                                            </div>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Ayah Wanita</label>
+                                            <input type="text" class="form-control" value="{{ $check->father_female }}" name="father_female"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Nama Ibu Wanita</label>
+                                            <input type="text" class="form-control" value="{{ $check->mother_female }}" name="mother_female"/>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="col-12 mb-3">
+                                        <div class="d-grid gap-2 text-center">
+                                        <button type="submit" class="btn btn-success">Simpan</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 mb-3">
-                                    <div class="d-grid gap-2 text-center">
-                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="jdwl-tab-pane" role="tabpanel" aria-labelledby="jdwl-tab" tabindex="0">
+                                <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="row mt-3">
+                                    <div class="col-12 mb-0">
+                                        <h3 class="mb-0">Jadwal</h3>
+                                        <hr class="mb-0" style="width: 60px">
+                                        
+                                    </div>
+                                            <div class="col-md-8 col-12 mb-3">
+                                                <div class="form-group">
+                                                    <label class="my-3" for="">Tanggal Akad Nikah</label>
+                                                    <input type="date" class="form-control" value="{{ $check->akad_date }}" name="akad_date"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-12 mb-3">
+                                                <div class="form-group">
+                                                    <label class="my-3" for="">Waktu Akad Nikah</label>
+                                                    <input type="time" class="form-control" value="{{ $check->akad_time }}" name="akad_time"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-12 mb-3">
+                                                <div class="form-group">
+                                                    <label class="my-3" for="">Tanggal Resepsi Nikah</label>
+                                                    <input type="date" class="form-control" value="{{ $check->resepsi_date }}" name="resepsi_date"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-12 mb-3">
+                                                <div class="form-group">
+                                                    <label class="my-3" for="">Waktu Resepsi Nikah</label>
+                                                    <input type="time" class="form-control" value="{{ $check->resepsi_time }}" name="resepsi_time"/>
+                                                </div>
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="col-12 mb-3">
+                                                <div class="d-grid gap-2 text-center">
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="psn-tab-pane" role="tabpanel" aria-labelledby="psn-tab" tabindex="0">
+                                <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <h3 class="mb-0">Pesan surat</h3>
+                                        <hr class="mb-0" style="width: 60px">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Header Message</label>
+                                            <textarea name="header_message" class="form-control" id="" cols="10" rows="3">{{ $check->header_message }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-5 col-12">
+                                                    <label class="my-3" for="">Background utama</label>
+                                                    <br>
+                                                    <img class="mb-3" src="{{ asset($check->bg_header) }}" style="width:250px;border-radius:8px" alt="">
+                                                </div>
+                                                <div class="col-md-7 col-12">
+                                                    <label class="my-3" for="">Ubah Background</label>
+                                                    <small class="text-danger">* batas ukuran 2mb</small>
+                                                    <br>
+                                                    <input type="file" class="form-control" name="bg_header">
+                                                    <input type="text" class="form-control" value="{{ $check->bg_header }}" name="default" hidden>
+                                                    @error('image')
+                                                    <br>
+                                                    <div class="text-danger mt-1">Gambar tidak sesuai dengan ketentuan</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Footer Message</label>
+                                            <textarea name="footer_message" class="form-control" id="" cols="10" rows="3">{{ $check->footer_message }}</textarea>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="col-12 mb-3">
+                                        <div class="d-grid gap-2 text-center">
+                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        </div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
+                           
                         </form>
+                    </div>
                 </div>
-                <div id="music">
-                    @if(!empty($check))
-                    <h3>Music</h3>
-                    <hr style="width: 60px">
-                    @endif
-                </div>
-                @endif
-
             </div>
-        
-          </div>
-  
-        </div>
+            @endif
+            </div>
       </section>
 @endsection

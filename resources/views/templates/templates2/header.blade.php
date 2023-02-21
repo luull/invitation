@@ -31,11 +31,3 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" style="background: url({{ asset('templates-assets/templates2/img/bg-header.png')}}) top right;">
-    <div class="hero-container">
-      <h1>Laura Thomson</h1>
-      <h2>I'm a Professional Photographer In New York City</h2>
-      <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
-    </div>
-  </section><!-- End Hero -->
