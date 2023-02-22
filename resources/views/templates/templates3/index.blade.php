@@ -1,20 +1,19 @@
 @extends('templates.master')
 @section('header-content-templates3')
 @if(!empty($getInvitation))
-<section id="hero"  class="d-flex flex-column justify-content-center" style="background: url({{ asset($getInvitation->bg_header)}}) top center !important;background-size: cover !important;background-repeat: no-repeat !important;">
+<section id="hero"  class="d-flex flex-column justify-content-start" style="background: url({{ asset($getInvitation->bg_header)}}) center center !important;background-size: cover !important;background-repeat: no-repeat !important;">
 @else
-<section id="hero"  class="d-flex flex-column justify-content-center">
+<section id="hero"  class="d-flex flex-column justify-content-start">
 @endif
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>{{ $getInvitation->username_male }} & {{ $getInvitation->username_female }}</h1>
-      <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+     <div class="text-center mt-5">
+        <h1 class="headline">pernikahan</h1>
+        <h1 style="font-family: 'Satisfy', cursive;">{{ $getInvitation->username_male }} <br> & {{ $getInvitation->username_female }}</h1>
+        <h3 class="headline mt-3" style="font-size:12px">Mengundang</h3>
+        <p><span class="typed" style="color:#000;font-weight:600;font-size:22px" data-typed-items="Annisa Salsabila"></span></p>
+        <div class="mt-3"> {!! QrCode::size(100)->backgroundColor(255,255,255,0)->color(0,0,0)->generate('https://luull.github.io') !!}</div>
+        <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
+     </div>
     </div>
   </section>
   @endsection

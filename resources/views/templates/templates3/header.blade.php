@@ -1,4 +1,4 @@
-<i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+{{-- <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
 <!-- ======= Header ======= -->
 <header id="header" class="d-flex flex-column justify-content-center">
 
@@ -13,4 +13,4 @@
     </ul>
   </nav><!-- .nav-menu -->
 
-</header>
+</header> --}}

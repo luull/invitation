@@ -51,8 +51,10 @@
             </div>
             @endif
             @if(!empty($check))
+            <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
+                @csrf
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="bio-tab" data-bs-toggle="tab" data-bs-target="#bio-tab-pane" type="button" role="tab" aria-controls="bio-tab-pane" aria-selected="true">Biodata</button>
@@ -62,59 +64,62 @@
                     </ul>
                     <div class="tab-content" id="myTabContent">
                      
+              
                             <div class="tab-pane fade show active" id="bio-tab-pane" role="tabpanel" aria-labelledby="bio-tab" tabindex="0">
-                                <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
-                                    @csrf
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <h3 class="mb-0">Biodata</h3>
                                         <hr class="mb-0" style="width: 60px">
                                     </div>
-                                    <div class="col-md-8 col-12 mb-3">
+                                    <div class="col-md-7 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Lengkap Pria</label>
+                                            <label class="my-2" for="">Nama Lengkap Pria</label>
                                             <input type="text" class="form-control" value="{{ $check->name_male }}" name="name_male"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12 mb-3">
+                                    <div class="col-md-5 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Panggilan Pria</label>
+                                            <label class="my-2" for="">Nama Panggilan Pria</label>
+                                     
+                                            
                                             <input type="text" class="form-control" value="{{ $check->username_male }}" name="username_male"/>
+                                            <small class="text-danger">* Max 15 Karakter</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Ayah Pria</label>
+                                            <label class="my-2" for="">Nama Ayah Pria</label>
                                             <input type="text" class="form-control" value="{{ $check->father_male }}" name="father_male"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Ibu Pria</label>
+                                            <label class="my-2" for="">Nama Ibu Pria</label>
                                             <input type="text" class="form-control" value="{{ $check->mother_male }}" name="mother_male"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 col-12 mb-3">
+                                    <div class="col-md-7 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Lengkap Wanita</label>
+                                            <label class="my-2" for="">Nama Lengkap Wanita</label>
                                             <input type="text" class="form-control" value="{{ $check->name_female }}" name="name_female"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12 mb-3">
+                                    <div class="col-md-5 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Panggilan Wanita</label>
+                                            <label class="my-2" for="">Nama Panggilan Wanita</label>
                                             <input type="text" class="form-control" value="{{ $check->username_female }}" name="username_female"/>
+                                            <small class="text-danger">* Max 15 Karakter</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Ayah Wanita</label>
+                                            <label class="my-2" for="">Nama Ayah Wanita</label>
                                             <input type="text" class="form-control" value="{{ $check->father_female }}" name="father_female"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12 mb-3">
                                         <div class="form-group">
-                                            <label class="my-3" for="">Nama Ibu Wanita</label>
+                                            <label class="my-2" for="">Nama Ibu Wanita</label>
                                             <input type="text" class="form-control" value="{{ $check->mother_female }}" name="mother_female"/>
                                         </div>
                                     </div>
@@ -125,11 +130,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                </form>
+                         
                             </div>
                             <div class="tab-pane fade" id="jdwl-tab-pane" role="tabpanel" aria-labelledby="jdwl-tab" tabindex="0">
-                                <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
-                                    @csrf
+                
                                 <div class="row mt-3">
                                     <div class="col-12 mb-0">
                                         <h3 class="mb-0">Jadwal</h3>
@@ -167,11 +171,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                </form>
+                                
                             </div>
                             <div class="tab-pane fade" id="psn-tab-pane" role="tabpanel" aria-labelledby="psn-tab" tabindex="0">
-                                <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
-                                    @csrf
+                    
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <h3 class="mb-0">Pesan surat</h3>
@@ -186,12 +189,12 @@
                                     <div class="col-12 mb-3">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-5 col-12">
+                                                <div class="col-md-4 col-12">
                                                     <label class="my-3" for="">Background utama</label>
                                                     <br>
-                                                    <img class="mb-3" src="{{ asset($check->bg_header) }}" style="width:250px;border-radius:8px" alt="">
+                                                    <img class="mb-3" src="{{ asset($check->bg_header) }}" style="width:100%;border-radius:8px" alt="">
                                                 </div>
-                                                <div class="col-md-7 col-12">
+                                                <div class="col-md-8 col-12">
                                                     <label class="my-3" for="">Ubah Background</label>
                                                     <small class="text-danger">* batas ukuran 2mb</small>
                                                     <br>
@@ -218,13 +221,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                </form>
+                        
                             </div>
                            
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
             @endif
             </div>
       </section>

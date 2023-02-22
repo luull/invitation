@@ -350,6 +350,15 @@ h6 {
   font-family: "Satisfy", serif;
   color: #fff;
 }
+#hero .headline {
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
 
 #hero h2 {
   color: #eee;
@@ -382,7 +391,7 @@ h6 {
 
 @media (max-width: 575px) {
   #hero h1 {
-    font-size: 40px;
+    font-size: 60px;
   }
 
   #hero h2 {

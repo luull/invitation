@@ -2,13 +2,21 @@
 @section('header-content-templates1')
   <!-- ======= Hero Section ======= -->
   @if(!empty($getInvitation))
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center" style="background: url({{ asset($getInvitation->bg_header)}}) top center !important;background-size: cover !important;background-repeat: no-repeat !important;">
+  <section id="hero" class="d-flex flex-column justify-content-start align-items-center" style="background: url({{ asset($getInvitation->bg_header)}}) top center !important;background-size: cover !important;background-repeat: no-repeat !important;">
   @else
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <section id="hero" class="d-flex flex-column justify-content-start align-items-center">
   @endif
-    <div class="hero-container" data-aos="fade-in">
-
-                <h1>{{ $getInvitation->username_male }} & {{ $getInvitation->username_female }}</h1>
+  <div class="hero-container" data-aos="fade-in">
+      <div class="text-center">
+                 <h1 class="headline">Pernikahan</h1>
+                 <h1 style="font-family: 'Dancing Script', cursive;text-transform:capitalize">{{ $getInvitation->username_male }}<br> & <br>{{ $getInvitation->username_female }}</h1>
+                 <h3 class="headline" style="color:#fff;font-size:12px">Mengundang</h3>
+                 <hr class="mb-2" style="color:#fff">
+                 <h3 class="mb-0" style="font-family: 'Gloock', serif;color:#fff;text-transform:capitalize">Akbar Rais</h3>
+                 <hr class="mt-2" style="color:#fff">
+                 <div> {!! QrCode::size(100)->backgroundColor(255,255,255,0)->color(255,255,255)->generate('https://luull.github.io') !!}</div>
+                 <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
+             </div>
                 {{-- <p><span class="typed" data-typed-items="{{ $getInvitation->quotes }}"></span></p> --}}
     </div>
   </section>

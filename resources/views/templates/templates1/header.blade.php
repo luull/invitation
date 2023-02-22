@@ -1,4 +1,4 @@
-<header id="header">
+{{-- <header id="header">
     <div class="d-flex flex-column">
 
       <div class="profile">
@@ -25,4 +25,4 @@
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
-
+ --}}

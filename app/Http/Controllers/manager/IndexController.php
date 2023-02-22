@@ -35,6 +35,13 @@ class indexController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->with(['message' => 'The Image does not meet the Requirements', 'color' => 'alert-warning']);
         }else{
+            $getLengthMale= \Str::length($req->username_male);
+            $getLengthFemale= \Str::length($req->username_female);
+            if($getLengthMale > 16){
+                return redirect()->back()->with(['message' => 'The Username male must be less than 15 characters', 'color' => 'alert-warning']);
+            }else if($getLengthFemale > 16){
+                return redirect()->back()->with(['message' => 'The Username female must be less than 15 characters', 'color' => 'alert-warning']);
+            }
             $image = '';
             if($req->hasFile('bg_header')){
                 $imageName=time().session('dataUser')->id.'.'.$req->bg_header->extension();

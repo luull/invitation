@@ -1,4 +1,4 @@
-<header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
+{{-- <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
 
     <nav id="navbar" class="navbar">
       <ul>
@@ -25,9 +25,9 @@
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
+    </ul>
+</nav><!-- .navbar -->
 
-  </header><!-- End Header -->
+</header><!-- End Header --> --}}
+{{-- <li><a class="nav-link scrollto" href="#about"><i class="bi bi-list mobile-nav-toggle"></i></a></li> --}}
 

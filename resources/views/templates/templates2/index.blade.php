@@ -7,8 +7,14 @@
   <section id="hero" >
   @endif
     <div class="hero-container">
-      <h1>{{ $getInvitation->username_male }} & {{ $getInvitation->username_female }}</h1>
-      <h2>{{ $getInvitation->quotes }}</h2>
+       <div class="text-center mt-5">
+        <h1 class="headline">pernikahan</h1>
+        <h1>{{ $getInvitation->username_male }} <br> & {{ $getInvitation->username_female }}</h1>
+        <h3 class="headline" style="color:#fff;font-size:12px">Mengundang</h3>
+        <h2 style="font-family: 'Domine', serif;font-size:22px;text-transform:capitalize">Idfan nasywan</h2>
+        <div> {!! QrCode::size(100)->backgroundColor(255,255,255,0)->color(255,255,255)->generate('https://luull.github.io') !!}</div>
+        <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
+       </div>
       <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
     </div>
   </section><!-- End Hero -->
@@ -16,7 +22,6 @@
 @section('main-content-templates2')
 <section id="about" class="about">
     <div class="container">
-
       <div class="section-title">
         <span>About Me</span>
         <h2>About Me</h2>
@@ -45,64 +50,7 @@
                 </ul>
               </div>
             </div>
-            <div class="row mt-n4">
-              <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                <div class="count-box">
-                  <i class="bi bi-emoji-smile" style="color: #20b38e;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
-                </div>
-              </div>
-
-              <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                <div class="count-box">
-                  <i class="bi bi-journal-richtextr" style="color: #8a1ac2;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
-                </div>
-              </div>
-
-              <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                <div class="count-box">
-                  <i class="bi bi-clock" style="color: #2cbdee;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
-                </div>
-              </div>
-
-              <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                <div class="count-box">
-                  <i class="bi bi-award" style="color: #ffb459;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
-                </div>
-              </div>
-            </div>
           </div><!-- End .content-->
-
-          <div class="skills-content ps-lg-4">
-            <div class="progress">
-              <span class="skill">HTML <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CSS <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 
