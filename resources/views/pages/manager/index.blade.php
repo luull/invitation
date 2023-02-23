@@ -5,7 +5,7 @@
     @endsection
     @section('content')<!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <div class="page-header d-flex align-items-center" style="background-image: url('frontpage-assets/img/page-header.jpg');">
+        <div class="page-header d-flex align-items-center" style="background-image: url('frontpage-assets/img/bg-header2.png');">
           <div class="container position-relative">
             <div class="row d-flex justify-content-center">
               <div class="col-lg-7 text-center">
@@ -59,6 +59,7 @@
                         <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="bio-tab" data-bs-toggle="tab" data-bs-target="#bio-tab-pane" type="button" role="tab" aria-controls="bio-tab-pane" aria-selected="true">Biodata</button>
                         <button class="nav-link" id="jdwl-tab" data-bs-toggle="tab" data-bs-target="#jdwl-tab-pane" type="button" role="tab" aria-controls="jdwl-tab-pane" aria-selected="false">Jadwal</button>
+                        <button class="nav-link" id="sound-tab" data-bs-toggle="tab" data-bs-target="#sound-tab-pane" type="button" role="tab" aria-controls="sound-tab-pane" aria-selected="false">Backsound</button>
                         <button class="nav-link" id="psn-tab" data-bs-toggle="tab" data-bs-target="#psn-tab-pane" type="button" role="tab" aria-controls="psn-tab-pane" aria-selected="false">Pesan surat</button>
                         </li>
                     </ul>
@@ -131,6 +132,29 @@
                                     </div>
                                 </div>
                          
+                            </div>
+                            <div class="tab-pane fade" id="sound-tab-pane" role="tabpanel" aria-labelledby="sound-tab" tabindex="0">
+                
+                                <div class="row mt-3">
+                                    <div class="col-12 mb-0">
+                                        <h3 class="mb-0">Backsound</h3>
+                                        <hr class="mb-0" style="width: 60px">
+                                        
+                                    </div>
+                                            <div class="col-md-12 col-12 mb-3">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">https://www.youtube.com/watch?v=</span>
+                                                    <input type="text" class="form-control" name="backsound" value="{{ $check->backsound }}">
+                                                  </div>
+                                                  
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="col-12 mb-3">
+                                                <div class="d-grid gap-2 text-center">
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                </div>
+                                            </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="jdwl-tab-pane" role="tabpanel" aria-labelledby="jdwl-tab" tabindex="0">
                 

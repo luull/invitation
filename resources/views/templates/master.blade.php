@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{{ session('themes')->themes}}</title>
+  <title>{{ $getTheme->themes}}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('templates-assets/'.session('themes')->themes.'/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('templates-assets/'.session('themes')->themes.'/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('templates-assets/'.$getTheme->themes.'/img/favicon.png')}}" rel="icon">
+  <link href="{{ asset('templates-assets/'.$getTheme->themes.'/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
@@ -30,7 +30,7 @@
   <link href="{{ asset('templates-assets/master/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{ asset('templates-assets/'.session('themes')->themes.'/css/style.css')}}" rel="stylesheet">
+  <link href="{{ asset('templates-assets/'.$getTheme->themes.'/css/style.css')}}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio - v3.10.0
@@ -45,18 +45,20 @@
   <!-- ======= Mobile nav toggle button ======= -->
   {{-- <i class="bi bi-list mobile-nav-toggle d-xl-none"></i> --}}
 
-  @include('templates.'.session('themes')->themes.'.header')
-  @yield(session('themes')->yield)
-  @yield('header-'.session('themes')->yield)
+  @include('templates.'.$getTheme->themes.'.header')
+  @yield($getTheme->yield)
+  @yield('header-'.$getTheme->yield)
   
   <main id="main">
-      @yield('main-'.session('themes')->yield)
+      @yield('main-'.$getTheme->yield)
     </main>
     
-  @include('templates.'.session('themes')->themes.'.footer')
+  @include('templates.'.$getTheme->themes.'.footer')
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
   @yield('script')
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
   <script src="{{ asset('templates-assets/master/vendor/purecounter/purecounter_vanilla.js')}}"></script>
   <script src="{{ asset('templates-assets/master/vendor/aos/aos.js')}}"></script>
   <script src="{{ asset('templates-assets/master/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -65,10 +67,11 @@
   <script src="{{ asset('templates-assets/master/vendor/swiper/swiper-bundle.min.js')}}"></script>
   <script src="{{ asset('templates-assets/master/vendor/typed.js/typed.min.js')}}"></script>
   <script src="{{ asset('templates-assets/master/vendor/waypoints/noframework.waypoints.js')}}"></script>
+  {{-- <script src="{{ asset('templates-assets/master/js/yt.js')}}"></script> --}}
   {{-- <script src="{{ asset('templates-assets/master/vendor/php-email-form/validate.js')}}"></script> --}}
-
   <!-- Template Main JS File -->
-  <script src="{{ asset('templates-assets/'.session('themes')->themes.'/js/main.js')}}"></script>
+
+  <script src="{{ asset('templates-assets/'.$getTheme->themes.'/js/main.js')}}"></script>
 
 </body>
 

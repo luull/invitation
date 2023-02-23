@@ -8,12 +8,16 @@ use File;
 use Illuminate\Support\Facades\Validator;
 class indexController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
         if(session('dataUser') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
             return redirect('/login');
         }
         if(session('themes') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
             return redirect('/login');
         }
         $check = Invitations::where('id_users', session('dataUser')->id)->first();
@@ -22,6 +26,16 @@ class indexController extends Controller
     
     public function initInvitation(Request $req)
     {
+        if(session('dataUser') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
+        if(session('themes') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
         $hsl = Invitations::create([
             'id_users' => session('dataUser')->id,
         ]);
@@ -29,6 +43,16 @@ class indexController extends Controller
     }
     public function createInvitation(Request $req)
     {
+        if(session('dataUser') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
+        if(session('themes') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
         $validate = Validator::make($req->all(),[
             'bg_header' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
@@ -70,6 +94,7 @@ class indexController extends Controller
                 'resepsi_time' => $req->resepsi_time,
                 'bg_header' => $image,
                 'header_message' => $req->header_message,
+                'backsound' => $req->backsound,
                 'akad_address' => $req->akad_address,
                 'resepsi_address' => $req->resepsi_address,
                 'footer_message' => $req->footer_message,

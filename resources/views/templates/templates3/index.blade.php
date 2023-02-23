@@ -18,6 +18,7 @@
   </section>
   @endsection
   @section('main-content-templates3')
+  <div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="1" id="youtube-audio" style="display:none"></div>
   <section id="about" class="about">
     <div class="container" data-aos="fade-up">
 

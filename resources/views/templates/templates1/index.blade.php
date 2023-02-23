@@ -22,6 +22,9 @@
   </section>
 @endsection
 @section('main-content-templates1')
+
+{{-- <embed name="GoodEnough" src="{{ asset('music-assets/music.mp3') }}" loop="false" hidden="true" autostart="true"> --}}
+    <div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="1" id="youtube-audio" style="display:none"></div>
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
         <div class="container">

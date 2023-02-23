@@ -13,7 +13,7 @@ use App\Http\Controllers;
 |
 */
 Route::get('/', 'frontpage\indexController@index');
-Route::get('/manager', 'manager\indexController@index');
+Route::get('/dashboard', 'manager\indexController@index');
 
 Route::get('/login', 'frontpage\AuthController@index')->name('login');
 Route::post('/auth/login', 'frontpage\AuthController@login')->name('redirectAuthLogin');

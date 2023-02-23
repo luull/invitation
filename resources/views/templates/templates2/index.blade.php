@@ -20,6 +20,7 @@
   </section><!-- End Hero -->
 @endsection
 @section('main-content-templates2')
+<div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="1" id="youtube-audio" style="display:none"></div>
 <section id="about" class="about">
     <div class="container">
       <div class="section-title">
