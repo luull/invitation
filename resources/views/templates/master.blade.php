@@ -45,11 +45,11 @@
   <!-- ======= Mobile nav toggle button ======= -->
   {{-- <i class="bi bi-list mobile-nav-toggle d-xl-none"></i> --}}
 
-  @include('templates.'.$getTheme->themes.'.header')
+  {{-- @include('templates.'.$getTheme->themes.'.header') --}}
   @yield($getTheme->yield)
   @yield('header-'.$getTheme->yield)
   
-  <main id="main">
+  <main id="mains">
       @yield('main-'.$getTheme->yield)
     </main>
     

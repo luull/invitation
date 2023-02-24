@@ -29,7 +29,7 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> --}}
-          <li><a href="contact.html">Contact</a></li>
+          {{-- <li><a href="contact.html">Contact</a></li> --}}
           <li><a href="{{ session('dataUser')->id}}/themes/{{ session('themes')->themes}}" target="_blank">Templates</a></li>
           <li>
             <li class="dropdown"><a href="#"><span>

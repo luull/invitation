@@ -1111,3 +1111,21 @@ section {
     padding-right: 20px 15px;
   }
 }
+
+.date_wed{
+  font-size: 18px;
+  font-family: 'Domine', serif;
+}
+.date_wed_desc{
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.date_wed_{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+}
+.desc{
+  font-size: 14px;
+}
