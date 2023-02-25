@@ -20,41 +20,102 @@
   </section><!-- End Hero -->
 @endsection
 @section('main-content-templates2')
-<div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="1" id="youtube-audio" style="display:none"></div>
-<section id="about" class="about">
+<div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="0" id="youtube-audio" style="display:none"></div>
+<section>
     <div class="container">
-      <div class="section-title">
-        <span>About Me</span>
-        <h2>About Me</h2>
-        <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-      </div>
+        <div class="section-title">
+            <div class="text-center">
+            <img src="{{ asset('templates-assets/master/img/bismillah.png') }}" class="img-fluid" style="width:300px;" alt="">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-12">
+                    <p class="desc" style="text-align:center">{{ $getInvitation->header_message }}</p>
+                </div>
+            </div>
+            {{-- <p>{{ $akad_date->format('l, j F Y ; h:i a') }}</p> --}}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-8 col-12">
+                  
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="mb-0" style="font-family: 'Dancing Script', cursive;text-transform:capitalize">{{ $getInvitation->name_male }}</h1>
+                            <small>Putra dari Bpk. {{ $getInvitation->father_male }} & Ibu. {{ $getInvitation->mother_male }}</small>
+                            <h1 class="my-2" style="font-family: 'Dancing Script', cursive;text-transform:capitalize;font-size:34px">&</h1>
+                            <h1 class="mb-0" style="font-family: 'Dancing Script', cursive;text-transform:capitalize">{{ $getInvitation->name_female }}</h1>
+                            <small>Putra dari Bpk. {{ $getInvitation->father_female }} & Ibu. {{ $getInvitation->mother_female }}</small>
 
-      <div class="row">
-        <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
-        <div class="col-lg-8 d-flex flex-column align-items-stretch">
-          <div class="content ps-lg-4 d-flex flex-column justify-content-center">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Laura Thomso</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-4 d-flex justify-content-center align-items-center">
+                            <h3 class="date_wed mb-0" style="font-size: 25px">{{ $akad_date->format('l') }}</h3>
+                        </div>
+                        <div class="col-4" style="border-left: 1px solid black;border-right: 1px solid black">
+                            <h3 class="date_wed mb-0">{{ $akad_date->format('F') }}</h3>
+                            @if ($akad_date == $resepsi_date)
+                            <h3 class="date_wed_ mb-0" style="font-size:70px">{{ $akad_date->format('j') }}</h3>
+                            @else 
+                            <h3 class="date_wed_ mb-0">{{ $akad_date->format('j') }}</h3>
+                            @endif
+                            <h3 class="date_wed mb-0">{{ $akad_date->format('Y') }}</h3>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center">
+                            @if ($akad_date == $resepsi_date)
+                                <div class="row">
+                                    <div class="col-12 justify-content-start">
+                                        
+                                        <small class="date_wed_desc">Akad</small>
+                                        <br>
+                                        <h3 class="date_wed mb-3">{{ $akad_time->format('h:i - a') }}</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="col-12">
+                                        <small class="date_wed_desc">Resepsi</small>
+                                        <h3 class="date_wed mb-0">{{ $resepsi_time->format('h:i - a') }}</h3>
+
+                                    </div>
+                                </div>
+                            @else
+                            <div class="col-12 justify-content-start">
+                   
+                                <small class="date_wed_desc">Akad</small>
+                                <br>
+                                <h3 class="date_wed mb-3">{{ $akad_time->format('h:i - a') }}</h3>
+                            </div>
+                            @endif
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-8 col-12">
+                  <hr>
+                <div class="row">
+                    <div class="col-md-8 col-8">
+                        <h3 class="date_wed mb-0" style="text-align: left">{{ $getInvitation->place }}</h3>
+                        <p class="desc" style="text-align: left">{{ $getInvitation->address }}</p>
+                    </div>
+                    <div class="col-md-4 col-4">
+                        <a href="{{ $getInvitation->link_address }}" target="_blank"> 
+                           <div  style="background-color: #f0f1f3;;padding:10px;border-radius:8px">
+                            <i class="fa fa-map-location-dot" style="font-size:50px;"></i>
+                            <br>
+                            <small class="text-dark">Google Maps</small>
+                           </div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
               </div>
             </div>
-          </div><!-- End .content-->
-        </div>
-      </div>
-
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-12">
+                    <p class="desc" style="text-align:center">{{ $getInvitation->footer_message }}</p>
+                </div>
+            </div>
+            </div>
+          </div>
     </div>
-  </section><!-- End About Me Section -->
+</section>
 @endsection

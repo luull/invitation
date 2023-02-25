@@ -31,7 +31,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('templates-assets/'.$getTheme->themes.'/css/style.css')}}" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- =======================================================
   * Template Name: iPortfolio - v3.10.0
   * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
@@ -70,7 +70,7 @@
   {{-- <script src="{{ asset('templates-assets/master/js/yt.js')}}"></script> --}}
   {{-- <script src="{{ asset('templates-assets/master/vendor/php-email-form/validate.js')}}"></script> --}}
   <!-- Template Main JS File -->
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="{{ asset('templates-assets/'.$getTheme->themes.'/js/main.js')}}"></script>
 
 </body>

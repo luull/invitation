@@ -3,9 +3,13 @@ namespace App\Http\Controllers\manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invitations;
+use App\Models\Guests;
 use Illuminate\Http\Request; 
 use File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Jorenvh\Share\ShareFacade;
+
 class indexController extends Controller
 {
     public function index(Request $req)
@@ -95,8 +99,9 @@ class indexController extends Controller
                 'bg_header' => $image,
                 'header_message' => $req->header_message,
                 'backsound' => $req->backsound,
-                'akad_address' => $req->akad_address,
-                'resepsi_address' => $req->resepsi_address,
+                'place' => $req->place,
+                'address' => $req->address,
+                'link_address' => $req->link_address,
                 'footer_message' => $req->footer_message,
             ]);
             if($hsl){
@@ -108,6 +113,56 @@ class indexController extends Controller
 
             }
         }
+    }
+    public function send(Request $req)
+    {
+        if(session('dataUser') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
+        if(session('themes') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
+        $slugin = \Str::slug($req->name);
+        $link = "http://127.0.0.1:8000/".$req->id_invitation."/invitation/".$slugin;
+        $hsl = Guests::create([
+            'id_invitation' => $req->id_invitation,
+            'name' => $req->name,
+            'link' => $link
+        ]);
+        // $share = ShareFacade::page($link)->whatsapp();
+        if($hsl){
+            session(['send' => $hsl]);
+            return  redirect('sendpage')->with(['message' => 'Invitation Successfully to send', 'color' => 'alert-success']);
+        }else{
+            return redirect()->back()->with(['message' => 'Invitation Unsuccess to send', 'color' => 'alert-danger']);
+
+        }
+    }
+    public function sendpage()
+    {
+        if(session('dataUser') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
+        if(session('themes') == null){
+            $req->session()->flush('dataUser');
+            $req->session()->flush('themes');
+            return redirect('/login');
+        }
+
+        $data = Guests::where('id', session('send')->id)->first();
+        $inv = Invitations::where('id_users', session('send')->id)->first();
+        $share = ShareFacade::page($data->link)
+        ->whatsapp()
+        ->facebook()
+        ->twitter()
+        ->telegram()->getRawLinks();
+        return view('pages.manager.sendpage', compact('data', 'inv','share'));
     }
 }
 ?>

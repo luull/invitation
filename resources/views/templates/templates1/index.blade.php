@@ -14,7 +14,7 @@
                  <hr class="mb-2" style="color:#fff">
                  <h3 class="mb-0" style="font-family: 'Gloock', serif;color:#fff;text-transform:capitalize">Akbar Rais</h3>
                  <hr class="mt-2" style="color:#fff">
-                 <div> {!! QrCode::size(100)->backgroundColor(255,255,255,0)->color(255,255,255)->generate('https://luull.github.io') !!}</div>
+                 <div> {!! QrCode::size(150)->backgroundColor(255,255,255,100)->color(0,0,0)->generate('https://luull.github.io') !!}</div>
                  <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
              </div>
                 {{-- <p><span class="typed" data-typed-items="{{ $getInvitation->quotes }}"></span></p> --}}
@@ -24,7 +24,7 @@
 @section('main-content-templates1')
 
 {{-- <embed name="GoodEnough" src="{{ asset('music-assets/music.mp3') }}" loop="false" hidden="true" autostart="true"> --}}
-    <div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="1" id="youtube-audio" style="display:none"></div>
+    <div data-video="{{ $getInvitation->backsound }}" data-autoplay="1" data-loop="0" id="youtube-audio" style="display:none"></div>
     <!-- ======= About Section ======= -->
 <section>
     <div class="container">
@@ -93,7 +93,27 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <div class="row justify-content-center">
+              <div class="col-md-8 col-12">
+                  <hr>
+                <div class="row">
+                    <div class="col-md-8 col-8">
+                        <h3 class="date_wed mb-0" style="text-align: left">{{ $getInvitation->place }}</h3>
+                        <p class="desc" style="text-align: left">{{ $getInvitation->address }}</p>
+                    </div>
+                    <div class="col-md-4 col-4">
+                        <a href="{{ $getInvitation->link_address }}" target="_blank"> 
+                           <div  style="background-color: #f0f1f3;;padding:10px;border-radius:8px">
+                            <i class="fa fa-map-location-dot" style="font-size:50px;"></i>
+                            <br>
+                            <small class="text-dark">Google Maps</small>
+                           </div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+              </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 col-12">
                     <p class="desc" style="text-align:center">{{ $getInvitation->footer_message }}</p>

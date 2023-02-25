@@ -17,7 +17,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Vendor CSS Files -->
   <link href="{{ asset('frontpage-assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ asset('frontpage-assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
@@ -40,7 +39,7 @@
 <body>
 
 
-  @if(Request::is('login','regis'))
+  @if(Request::is('login','regis','admin/scan'))
   <!-- ======= Header ======= -->
   <!-- End Header -->
   @else
@@ -58,7 +57,7 @@
     @yield('content')
   </main><!-- End #main -->
 
-  @if(Request::is('login','regis'))
+  @if(Request::is('login','regis','admin/scan'))
   <!-- ======= Footer ======= -->
   <!-- End Footer -->
   @else
@@ -77,7 +76,8 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  @yield('script')
+  <script src="https://kit.fontawesome.com/405cc35206.js" crossorigin="anonymous"></script>
   <script src="{{ asset('frontpage-assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{ asset('frontpage-assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
   <script src="{{ asset('frontpage-assets/vendor/glightbox/js/glightbox.min.js')}}"></script>

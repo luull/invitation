@@ -14,6 +14,10 @@ use App\Http\Controllers;
 */
 Route::get('/', 'frontpage\indexController@index');
 Route::get('/dashboard', 'manager\indexController@index');
+Route::post('/send', 'manager\indexController@send')->name('send');
+Route::get('/sendpage', 'manager\indexController@sendpage')->name('sendpage');
+Route::get('/admin/scan', 'admin\indexController@index');
+Route::post('/admin/scanning', 'admin\indexController@scanning')->name('scanning');
 
 Route::get('/login', 'frontpage\AuthController@index')->name('login');
 Route::post('/auth/login', 'frontpage\AuthController@login')->name('redirectAuthLogin');
@@ -35,3 +39,4 @@ Route::get('/init/invitation', 'manager\indexController@initInvitation');
 Route::post('/create/invitation', 'manager\indexController@createInvitation')->name('create-invitation');
 
 Route::get('{id}/themes/{theme}', 'templates\indexController@index');
+Route::get('{id}/invitation/{name}', 'templates\indexController@share');

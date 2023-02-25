@@ -30,18 +30,18 @@
   
             @if(empty($check))
             <div class="row gy-4 justify-content-center">
-            <div class="text-center">
-            <div class="row">
-                <div class="col-md-8 col-12 col-sm-12 col-xs-12 col-12" style="text-align:left">
-                    <h3>Silahkan Buat Undangan</h3>
-                </div>
-                <div class="col-md-4 col-sm-12 col-xs-12 col-12" style="text-align:right">
-                       <a href="/init/invitation" class="btn btn-light">Buat Undangan</a>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-12 col-sm-12 col-xs-12 col-12" style="text-align:left">
+                            <h3>Silahkan Buat Undangan</h3>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 col-12" style="text-align:right">
+                            <a href="/init/invitation" class="btn btn-light">Buat Undangan</a>
+                            </div>
                     </div>
+                    <hr>
+                    <img src="{{ asset('frontpage-assets/img/schedule.svg') }}" class="img-fluid" alt="">
                 </div>
-                <hr>
-                <img src="{{ asset('frontpage-assets/img/schedule.svg') }}" class="img-fluid" alt="">
-            </div>
             </div>
             @endif
             @if (session('message'))
@@ -51,14 +51,15 @@
             </div>
             @endif
             @if(!empty($check))
-            <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
-                @csrf
-            <div class="row">
-                <div class="col-6">
+            <div class="row justify-content-between">
+                <div class="col-7">
+                    <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
+                        @csrf
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="bio-tab" data-bs-toggle="tab" data-bs-target="#bio-tab-pane" type="button" role="tab" aria-controls="bio-tab-pane" aria-selected="true">Biodata</button>
                         <button class="nav-link" id="jdwl-tab" data-bs-toggle="tab" data-bs-target="#jdwl-tab-pane" type="button" role="tab" aria-controls="jdwl-tab-pane" aria-selected="false">Jadwal</button>
+                        <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#place-tab-pane" type="button" role="tab" aria-controls="place-tab-pane" aria-selected="false">Tempat</button>
                         <button class="nav-link" id="sound-tab" data-bs-toggle="tab" data-bs-target="#sound-tab-pane" type="button" role="tab" aria-controls="sound-tab-pane" aria-selected="false">Backsound</button>
                         <button class="nav-link" id="psn-tab" data-bs-toggle="tab" data-bs-target="#psn-tab-pane" type="button" role="tab" aria-controls="psn-tab-pane" aria-selected="false">Pesan surat</button>
                         </li>
@@ -197,6 +198,41 @@
                                         </div>
                                 
                             </div>
+                            <div class="tab-pane fade" id="place-tab-pane" role="tabpanel" aria-labelledby="place-tab" tabindex="0">
+                
+                                <div class="row mt-3">
+                                    <div class="col-12 mb-0">
+                                        <h3 class="mb-0">Alamat</h3>
+                                        <hr class="mb-0" style="width: 60px">
+                                        
+                                    </div>
+                                     
+                                                <div class="col-md-12 col-12 mb-3">
+                                                    <div class="form-group">
+                                                        <label class="my-2" for="">Nama Tempat</label>
+                                                        <input type="text" placeholder="Hotel .." class="form-control" value="{{ $check->place }}" name="place"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <div class="form-group">
+                                                        <label class="my-3" for="">Alamat lengkap</label>
+                                                        <textarea name="address" placeholder="Jln. ..." class="form-control" id="" cols="10" rows="3">{{ $check->address }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-12 mb-3">
+                                                    <div class="form-group">
+                                                        <label class="my-2" for="">Link Google Maps</label>
+                                                        <input type="text" class="form-control" value="{{ $check->link_address }}" name="link_address"/>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-4">
+                                                <div class="col-12 mb-3">
+                                                    <div class="d-grid gap-2 text-center">
+                                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                                    </div>
+                                                </div>
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="psn-tab-pane" role="tabpanel" aria-labelledby="psn-tab" tabindex="0">
                     
                                 <div class="row mt-3">
@@ -249,9 +285,38 @@
                             </div>
                            
                         </div>
+                    </form>
+                </div>
+                <div class="col-4 mt-3">
+                    <div class="card">
+                        <form action="{{ route('send') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                        <div class="card-body">
+                            <div class="col-12 mt-2 mb-2">
+                                <h3 class="mb-0">Kirim</h3>
+                                <hr class="mb-0" style="width: 60px">
+                            </div>
+                               <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-2">
+                                        <label class="my-3">Nama Tamu</label>
+                                        <input type="text" name="name" class="form-control">
+                                        <input type="text" value="{{ $check->id }}" name="id_invitation" class="form-control">
+                                    </div>
+                                </div>
+                          
+                            </div>
+                        </div>
+                    
+                        <div class="d-grid text-center">
+                            {{-- {!! $share !!} --}}
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-whatsapp"></i> Kirim Whatsapp</button>
+                        </div>
+                        
+                        </form>
                     </div>
                 </div>
-            </form>
+                </div>
             @endif
             </div>
       </section>
