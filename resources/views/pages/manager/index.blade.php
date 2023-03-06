@@ -52,7 +52,7 @@
             @endif
             @if(!empty($check))
             <div class="row justify-content-between">
-                <div class="col-7">
+                <div class="col-md-7 col-12">
                     <form role="form" method="POST" action="{{ route('create-invitation') }}" enctype="multipart/form-data">
                         @csrf
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -287,9 +287,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-4 mt-3">
+                <div class="col-md-4 col-12 mt-3">
                     <div class="card">
-                        <form action="{{ route('send') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('send') }}"  target="_blank"  method="POST" enctype="multipart/form-data">
                             @csrf
                         <div class="card-body">
                             <div class="col-12 mt-2 mb-2">

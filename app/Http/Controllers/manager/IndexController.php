@@ -9,6 +9,7 @@ use File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Jorenvh\Share\ShareFacade;
+use Carbon\Carbon;
 
 class indexController extends Controller
 {
@@ -127,16 +128,36 @@ class indexController extends Controller
             return redirect('/login');
         }
         $slugin = \Str::slug($req->name);
-        $link = "http://127.0.0.1:8000/".$req->id_invitation."/invitation/".$slugin;
+        $link = "https://127.0.0.1:8000/".$req->id_invitation."/invitation/".$slugin;
+        $getInv = Invitations::where('id', $req->id_invitation)->first();
+
         $hsl = Guests::create([
             'id_invitation' => $req->id_invitation,
             'name' => $req->name,
             'link' => $link
         ]);
-        // $share = ShareFacade::page($link)->whatsapp();
-        if($hsl){
-            session(['send' => $hsl]);
-            return  redirect('sendpage')->with(['message' => 'Invitation Successfully to send', 'color' => 'alert-success']);
+        $no_telp="6287882339006";
+        $filter_header_message = str_replace([" ","\n","\r"], '%20', $getInv->header_message);
+        $header_message = str_replace(["&"], '+%26+', $filter_header_message);
+
+        $filter_footer_message = str_replace([" ","\n","\r"], '%20', $getInv->footer_message);
+        $footer_message = str_replace(["&"], '+%26+', $filter_footer_message);
+
+        $akad_date = Carbon::parse($getInv->akad_date)->locale('id');
+        $akad_date->settings(['formatFunction' => 'translatedFormat']);
+
+        $akad_time = Carbon::parse($getInv->akad_time)->locale('id');
+        $akad_time->settings(['formatFunction' => 'translatedFormat']);
+
+        $resepsi_date = Carbon::parse($getInv->resepsi_date)->locale('id');
+        $resepsi_date->settings(['formatFunction' => 'translatedFormat']);
+
+        $resepsi_time = Carbon::parse($getInv->resepsi_time)->locale('id');
+        $resepsi_time->settings(['formatFunction' => 'translatedFormat']);
+        // dd($header_message);
+        $linkny = "https://wa.me/".$no_telp."?text=".$link."%0a".$header_message."%0a".$getInv->username_male." +%26+ ".$getInv->username_female."%0a yang di laksanakan pada tanggal %0a Akad : %0a".$akad_date->format('l, j F Y').", Jam ".$akad_time->format('h:i - a')."%0a Resepsi : %0a".$resepsi_date->format('l, j F Y').", Jam ".$resepsi_time->format('h:i - a')."%0a".$footer_message;
+        if($hsl){ 
+            return Redirect::away($linkny);
         }else{
             return redirect()->back()->with(['message' => 'Invitation Unsuccess to send', 'color' => 'alert-danger']);
 

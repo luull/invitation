@@ -6,8 +6,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{ $getTheme->themes}}</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ $getInvitation->username_male }} & {{ $getInvitation->username_female }}" />
+  <meta property="og:description" content="{{ $getInvitation->header_message }}" />
+  <meta property="og:url" content="{{ $getInvitation->link_address }}" />
+  <meta property="og:image" content="{{ asset($getInvitation->bg_header) }}" />
 
   <!-- Favicons -->
   <link href="{{ asset('templates-assets/'.$getTheme->themes.'/img/favicon.png')}}" rel="icon">
@@ -51,7 +54,7 @@
   
   <main id="mains">
       @yield('main-'.$getTheme->yield)
-    </main>
+  </main>
     
   @include('templates.'.$getTheme->themes.'.footer')
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

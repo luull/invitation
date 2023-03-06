@@ -14,7 +14,7 @@
                  <hr class="mb-2" style="color:#fff">
                  <h3 class="mb-0" style="font-family: 'Gloock', serif;color:#fff;text-transform:capitalize">Akbar Rais</h3>
                  <hr class="mt-2" style="color:#fff">
-                 <div> {!! QrCode::size(150)->backgroundColor(255,255,255,100)->color(0,0,0)->generate('https://luull.github.io') !!}</div>
+                 <div> {!! QrCode::size(150)->backgroundColor(0,0,0,20)->color(255,255,255)->generate('https://luull.github.io') !!}</div>
                  <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
              </div>
                 {{-- <p><span class="typed" data-typed-items="{{ $getInvitation->quotes }}"></span></p> --}}
