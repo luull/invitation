@@ -26,6 +26,8 @@ class indexController extends Controller
     }
     public function share(Request $req)
     {
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $getGuest = Guests::where('link', $url)->first();
         $getInvitation = Invitations::where('id', $req->id)->first();
         $getUser = Users::where('id', $getInvitation->id_users)->first();
         $getTheme = Templates::where('id', $getUser->id_templates)->first();
@@ -37,7 +39,7 @@ class indexController extends Controller
         $resepsi_date->settings(['formatFunction' => 'translatedFormat']);
         $resepsi_time = Carbon::parse($getInvitation->resepsi_time)->locale('id');
         $resepsi_time->settings(['formatFunction' => 'translatedFormat']);
-        return view('templates/'.$getTheme->themes.'/index', compact('getInvitation','getTheme','akad_date','resepsi_date','akad_time','resepsi_time'));
+        return view('templates/'.$getTheme->themes.'/index', compact('getInvitation','getTheme','akad_date','resepsi_date','akad_time','resepsi_time','getGuest'));
     }
 }
 ?>

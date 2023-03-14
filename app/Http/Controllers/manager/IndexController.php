@@ -128,15 +128,25 @@ class indexController extends Controller
             return redirect('/login');
         }
         $slugin = \Str::slug($req->name);
-        $link = "https://127.0.0.1:8000/".$req->id_invitation."/invitation/".$slugin;
+        // $link = "https://mysuperboss.com/display/bayu/shad-linnisa-30-kapsul";
         $getInv = Invitations::where('id', $req->id_invitation)->first();
+        $name = $getInv->username_male."dan".$getInv->username_female;
+        $link = "http://127.0.0.1:8000/".$req->id_invitation."/".rand(0,999)."/".$name."/".$slugin;
+        if(substr($req->phone, 0, 1) != "6" ){
+            $cut = substr($req->phone, 1);
+            $phone = "62".$cut;
+        }else{
+            $phone = $req->phone;
+        }
 
-        $hsl = Guests::create([
-            'id_invitation' => $req->id_invitation,
-            'name' => $req->name,
-            'link' => $link
-        ]);
-        $no_telp="6287882339006";
+            $hsl = Guests::create([
+                'id_invitation' => $req->id_invitation,
+                'name' => $slugin,
+                'link' => $link,
+                'phone' => $phone,
+                'status' => 0
+            ]);
+   
         $filter_header_message = str_replace([" ","\n","\r"], '%20', $getInv->header_message);
         $header_message = str_replace(["&"], '+%26+', $filter_header_message);
 
@@ -154,8 +164,7 @@ class indexController extends Controller
 
         $resepsi_time = Carbon::parse($getInv->resepsi_time)->locale('id');
         $resepsi_time->settings(['formatFunction' => 'translatedFormat']);
-        // dd($header_message);
-        $linkny = "https://wa.me/".$no_telp."?text=".$link."%0a".$header_message."%0a".$getInv->username_male." +%26+ ".$getInv->username_female."%0a yang di laksanakan pada tanggal %0a Akad : %0a".$akad_date->format('l, j F Y').", Jam ".$akad_time->format('h:i - a')."%0a Resepsi : %0a".$resepsi_date->format('l, j F Y').", Jam ".$resepsi_time->format('h:i - a')."%0a".$footer_message;
+        $linkny = "https://wa.me/".$phone."?text=Dengan Hormat,%0aUndangan Kepada *".$req->name."*%0a".$header_message."%0a*".$getInv->name_male."* *%26* *".$getInv->name_female."*%0a yang di laksanakan pada tanggal %0a Akad : %0a*".$akad_date->format('l, j F Y')."*%0aJam *".$akad_time->format('h:i - a')."%0aResepsi : %0a*".$resepsi_date->format('l, j F Y')."*%0a*Jam ".$resepsi_time->format('h:i - a')."*%0a*Konfirmasi kehadiranmu disini*%0a".$link."%0a*".$getInv->place."*%0a".$getInv->address."%0a".$getInv->link_address."%0a".$footer_message;
         if($hsl){ 
             return Redirect::away($linkny);
         }else{

@@ -39,4 +39,4 @@ Route::get('/init/invitation', 'manager\indexController@initInvitation');
 Route::post('/create/invitation', 'manager\indexController@createInvitation')->name('create-invitation');
 
 Route::get('{id}/themes/{theme}', 'templates\indexController@index');
-Route::get('{id}/invitation/{name}', 'templates\indexController@share');
+Route::get('{id}/{idguest}/{wedding}/{name}', 'templates\indexController@share');

@@ -12,9 +12,9 @@
                  <h1 style="font-family: 'Dancing Script', cursive;text-transform:capitalize">{{ $getInvitation->username_male }}<br> & <br>{{ $getInvitation->username_female }}</h1>
                  <h3 class="headline" style="color:#fff;font-size:12px">Mengundang</h3>
                  <hr class="mb-2" style="color:#fff">
-                 <h3 class="mb-0" style="font-family: 'Gloock', serif;color:#fff;text-transform:capitalize">Akbar Rais</h3>
+                 <h3 class="mb-0" style="font-family: 'Gloock', serif;color:#fff;text-transform:capitalize">{{ $getGuest->name }}</h3>
                  <hr class="mt-2" style="color:#fff">
-                 <div> {!! QrCode::size(150)->backgroundColor(0,0,0,20)->color(255,255,255)->generate('https://luull.github.io') !!}</div>
+                 <div> {!! QrCode::size(150)->backgroundColor(0,0,0,20)->color(255,255,255)->generate($getGuest->link) !!}</div>
                  <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
              </div>
                 {{-- <p><span class="typed" data-typed-items="{{ $getInvitation->quotes }}"></span></p> --}}

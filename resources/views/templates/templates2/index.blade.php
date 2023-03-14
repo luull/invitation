@@ -7,12 +7,12 @@
   <section id="hero" >
   @endif
     <div class="hero-container">
-       <div class="text-center mt-5">
+       <div class="text-center">
         <h1 class="headline">pernikahan</h1>
         <h1>{{ $getInvitation->username_male }} <br> & {{ $getInvitation->username_female }}</h1>
         <h3 class="headline" style="color:#fff;font-size:12px">Mengundang</h3>
-        <h2 style="font-family: 'Domine', serif;font-size:22px;text-transform:capitalize">Idfan nasywan</h2>
-        <div> {!! QrCode::size(100)->backgroundColor(255,255,255,0)->color(255,255,255)->generate('https://luull.github.io') !!}</div>
+        <h2 style="font-family: 'Domine', serif;font-size:22px;text-transform:capitalize">{{ $getGuest->name }}</h2>
+        <div> {!! QrCode::size(150)->backgroundColor(0,0,0,20)->color(255,255,255)->generate($getGuest->link) !!}</div>
         <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
        </div>
       <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
