@@ -10,8 +10,26 @@
         <h1 class="headline">pernikahan</h1>
         <h1 style="font-family: 'Satisfy', cursive;">{{ $getInvitation->username_male }} <br> & {{ $getInvitation->username_female }}</h1>
         <h3 class="headline mt-3" style="font-size:12px">Mengundang</h3>
-        <p><span class="typed" style="color:#000;font-weight:600;font-size:22px" data-typed-items="{{ $getGuest->name }}"></span></p>
-        <div class="mt-3"> {!! QrCode::size(150)->backgroundColor(255,255,255,50)->color(0,0,0)->generate($getGuest->link) !!}</div>
+        @if (!empty($getGuest))
+            <p><span class="typed" style="color:#000;font-weight:600;font-size:22px" data-typed-items="{{ $getGuest->name }}"></span></p>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-qrcode"></i>
+                QR CODE
+              </button>
+              @section('qr')
+               {!! QrCode::size(250)->color(0,0,0)->generate($getGuest->link) !!}
+               @endsection    
+        @else
+            <p><span class="typed" style="color:#000;font-weight:600;font-size:22px" data-typed-items="Sample Tamu"></span></p>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-qrcode"></i>
+                QR CODE
+              </button>
+              @section('qr')
+               {!! QrCode::size(250)->color(0,0,0)->generate('www.google.com') !!}
+               @endsection    
+
+        @endif
         <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
      </div>
     </div>

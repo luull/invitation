@@ -60,8 +60,8 @@
                         <button class="nav-link active" id="bio-tab" data-bs-toggle="tab" data-bs-target="#bio-tab-pane" type="button" role="tab" aria-controls="bio-tab-pane" aria-selected="true">Biodata</button>
                         <button class="nav-link" id="jdwl-tab" data-bs-toggle="tab" data-bs-target="#jdwl-tab-pane" type="button" role="tab" aria-controls="jdwl-tab-pane" aria-selected="false">Jadwal</button>
                         <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#place-tab-pane" type="button" role="tab" aria-controls="place-tab-pane" aria-selected="false">Tempat</button>
-                        <button class="nav-link" id="sound-tab" data-bs-toggle="tab" data-bs-target="#sound-tab-pane" type="button" role="tab" aria-controls="sound-tab-pane" aria-selected="false">Backsound</button>
-                        <button class="nav-link" id="psn-tab" data-bs-toggle="tab" data-bs-target="#psn-tab-pane" type="button" role="tab" aria-controls="psn-tab-pane" aria-selected="false">Pesan surat</button>
+                        <button class="nav-link" id="sound-tab" data-bs-toggle="tab" data-bs-target="#sound-tab-pane" type="button" role="tab" aria-controls="sound-tab-pane" aria-selected="false">Templates</button>
+                        
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -138,11 +138,46 @@
                 
                                 <div class="row mt-3">
                                     <div class="col-12 mb-0">
-                                        <h3 class="mb-0">Backsound</h3>
+                                        <h3 class="mb-0">Templates</h3>
                                         <hr class="mb-0" style="width: 60px">
                                         
                                     </div>
+                                      <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Header Message</label>
+                                            <textarea name="header_message" class="form-control" id="" cols="10" rows="3">{{ $check->header_message }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4 col-12">
+                                                    <label class="my-3" for="">Background utama</label>
+                                                    <br>
+                                                    <img class="mb-3" src="{{ asset($check->bg_header) }}" style="width:100%;border-radius:8px" alt="">
+                                                </div>
+                                                <div class="col-md-8 col-12">
+                                                    <label class="my-3" for="">Ubah Background</label>
+                                                    <small class="text-danger">* batas ukuran 2mb</small>
+                                                    <br>
+                                                    <input type="file" class="form-control" name="bg_header">
+                                                    <input type="text" class="form-control" value="{{ $check->bg_header }}" name="default" hidden>
+                                                    @error('image')
+                                                    <br>
+                                                    <div class="text-danger mt-1">Gambar tidak sesuai dengan ketentuan</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label class="my-3" for="">Footer Message</label>
+                                            <textarea name="footer_message" class="form-control" id="" cols="10" rows="3">{{ $check->footer_message }}</textarea>
+                                        </div>
+                                    </div>
                                             <div class="col-md-12 col-12 mb-3">
+                                                 <label class="my-3" for="">Backsound</label>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon1">https://www.youtube.com/watch?v=</span>
                                                     <input type="text" class="form-control" name="backsound" value="{{ $check->backsound }}">
@@ -232,56 +267,6 @@
                                                     </div>
                                                 </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="psn-tab-pane" role="tabpanel" aria-labelledby="psn-tab" tabindex="0">
-                    
-                                <div class="row mt-3">
-                                    <div class="col-12">
-                                        <h3 class="mb-0">Pesan surat</h3>
-                                        <hr class="mb-0" style="width: 60px">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <div class="form-group">
-                                            <label class="my-3" for="">Header Message</label>
-                                            <textarea name="header_message" class="form-control" id="" cols="10" rows="3">{{ $check->header_message }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-4 col-12">
-                                                    <label class="my-3" for="">Background utama</label>
-                                                    <br>
-                                                    <img class="mb-3" src="{{ asset($check->bg_header) }}" style="width:100%;border-radius:8px" alt="">
-                                                </div>
-                                                <div class="col-md-8 col-12">
-                                                    <label class="my-3" for="">Ubah Background</label>
-                                                    <small class="text-danger">* batas ukuran 2mb</small>
-                                                    <br>
-                                                    <input type="file" class="form-control" name="bg_header">
-                                                    <input type="text" class="form-control" value="{{ $check->bg_header }}" name="default" hidden>
-                                                    @error('image')
-                                                    <br>
-                                                    <div class="text-danger mt-1">Gambar tidak sesuai dengan ketentuan</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <div class="form-group">
-                                            <label class="my-3" for="">Footer Message</label>
-                                            <textarea name="footer_message" class="form-control" id="" cols="10" rows="3">{{ $check->footer_message }}</textarea>
-                                        </div>
-                                    </div>
-                                    <hr class="my-4">
-                                    <div class="col-12 mb-3">
-                                        <div class="d-grid gap-2 text-center">
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        
                             </div>
                            
                         </div>

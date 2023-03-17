@@ -38,7 +38,7 @@
                             $getTheme = Templates::where('id', $hsl->id_templates)->first();
                             session(['dataUser' => $hsl]);
                             session(['themes' => $getTheme]);
-                            return redirect('/dashboard')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
+                            return redirect('/admin/dashboard')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
 
                         }else{
                             return redirect()->back()->with(['message' => 'Invalid Password', 'color' => 'alert-danger']);
@@ -64,7 +64,7 @@
                     $getTheme = Templates::where('id', $user->id_templates)->first();
                     session(['dataUser' => $user]);
                     session(['themes' => $getTheme]);
-                    return redirect('/dashboard')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
+                    return redirect('/admin/dashboard')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
                 }else{
                     $create = Users::create([
                         'name'              => $user_google['name'],
@@ -89,7 +89,7 @@
                     $getTheme = Templates::where('id', $user->id_templates)->first();
                     session(['dataUser' => $user]);
                     session(['themes' => $getTheme]);
-                    return redirect('/dashboard')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
+                    return redirect('/admin/dashboard')->with(['message' => 'Successfully logged in', 'color' => 'alert-success']);
                 }else{
                     $create = Users::create([
                         'name'              => $user_facebook['name'],
@@ -143,7 +143,7 @@
                 $request->session()->flush('dataUser');
                 $request->session()->flush('themes');
             }
-            return redirect('/dashboard')->with(['message' => 'Successfully Logged Out', 'color' => 'alert-success']);
+            return redirect('/admin/dashboard')->with(['message' => 'Successfully Logged Out', 'color' => 'alert-success']);
         }
     }
 

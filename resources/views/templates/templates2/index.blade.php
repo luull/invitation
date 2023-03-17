@@ -11,8 +11,25 @@
         <h1 class="headline">pernikahan</h1>
         <h1>{{ $getInvitation->username_male }} <br> & {{ $getInvitation->username_female }}</h1>
         <h3 class="headline" style="color:#fff;font-size:12px">Mengundang</h3>
-        <h2 style="font-family: 'Domine', serif;font-size:22px;text-transform:capitalize">{{ $getGuest->name }}</h2>
-        <div> {!! QrCode::size(150)->backgroundColor(0,0,0,20)->color(255,255,255)->generate($getGuest->link) !!}</div>
+        @if (!empty($getGuest))
+            <h2 style="font-family: 'Domine', serif;font-size:22px;text-transform:capitalize">{{ $getGuest->name }}</h2>
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-qrcode"></i>
+                QR CODE
+              </button>
+              @section('qr')
+               {!! QrCode::size(250)->color(0,0,0)->generate($getGuest->link) !!}
+               @endsection    
+        @else
+            <h2 style="font-family: 'Domine', serif;font-size:22px;text-transform:capitalize">Sample Tamu</h2>
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-qrcode"></i>
+                QR CODE
+              </button>
+              @section('qr')
+               {!! QrCode::size(250)->color(0,0,0)->generate("www.google.com") !!}
+               @endsection    
+        @endif
         <h2 class="headline mt-3" style="font-size:10px;letter-spacing:1px;line-height:12px"><strong>scan barcode</strong> <br> untuk kehadiran</h2>
        </div>
       <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>

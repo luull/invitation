@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-  <title>{{ $getTheme->themes}}</title>
+  <title>{!! $getInvitation->username_male !!} & {!! $getInvitation->username_female !!}</title>
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="{{ $getInvitation->username_male }} & {{ $getInvitation->username_female }}" />
-  <meta property="og:description" content="{{ $getInvitation->header_message }}" />
-  <meta property="og:url" content="{{ $getInvitation->link_address }}" />
-  <meta property="og:image" content="{{ asset($getInvitation->bg_header) }}" />
+  <meta property="og:title" content="{!! $getInvitation->username_male !!} & {!! $getInvitation->username_female !!}" />
+  <meta property="og:description" content="{!! $getInvitation->header_message !!}" />
+  <meta property="og:url" content="{!! $getInvitation->link_address !!}" />
+  <meta property="og:image" content="{!! asset($getInvitation->bg_header) !!}" />
 
   <!-- Favicons -->
   <link href="{{ asset('templates-assets/'.$getTheme->themes.'/img/favicon.png')}}" rel="icon">
@@ -56,7 +57,7 @@
       @yield('main-'.$getTheme->yield)
   </main>
     
-  @include('templates.'.$getTheme->themes.'.footer')
+  {{-- @include('templates.'.$getTheme->themes.'.footer') --}}
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
   @yield('script')
@@ -77,5 +78,22 @@
   <script src="{{ asset('templates-assets/'.$getTheme->themes.'/js/main.js')}}"></script>
 
 </body>
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:auto;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body mb-4">
+          <div style="text-align:center">
+             @yield('qr')
+          </div>
+      </div>
+   
+    </div>
+  </div>
+</div>
 
 </html>
